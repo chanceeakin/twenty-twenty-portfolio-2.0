@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Install latest nightly
         uses: actions-rs/toolchain@v1
         with:
@@ -20,9 +21,9 @@ jobs:
           override: true
           components: rustfmt, clippy
 
-      - uses: jetli/wasm-pack-action@v0.3.0
-        with:
-          version: "latest"
+      - name: Install
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
       - uses: jsmrcaga/action-netlify-deploy@master
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
