@@ -1,7 +1,7 @@
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const distPath = "./dist";
+const distPath = "dist";
 module.exports = (env, argv) => {
   return {
     devServer: {
