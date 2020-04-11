@@ -2,7 +2,7 @@ const path = require("path");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const distPath = path.resolve(__dirname, "dist");
+const distPath = path.resolve(__dirname, "netlify");
 module.exports = (env, argv) => {
   return {
     devServer: {
