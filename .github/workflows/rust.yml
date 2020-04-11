@@ -1,5 +1,8 @@
 name: Rust
 
+env:
+  NODE_VERSION: "12.x"
+
 on:
   push:
     branches: [master]
@@ -20,6 +23,17 @@ jobs:
           toolchain: nightly
           override: true
           components: rustfmt, clippy
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION}}
+      - name: npm install, build, and test
+        run: |
+          # Build and test the project, then
+          # deploy to Azure Web App.
+          npm install
+          npm run build --if-present
 
       - uses: jsmrcaga/action-netlify-deploy@master
         with:
