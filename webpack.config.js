@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const distPath = path.resolve(__dirname, "dist");
 module.exports = (env, argv) => {
+  console.log(distPath);
   return {
     devServer: {
       contentBase: distPath,
