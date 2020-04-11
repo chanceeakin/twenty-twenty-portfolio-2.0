@@ -34,6 +34,7 @@ impl Component for HomeModel {
         html! {
             <div>
                 <p class="root-two">{ "I am the Home component"}</p>
+                <p class="root-two">{ "Look at me, I am the captain now"}</p>
                 <div>
                     <RouterButton<AppRoute>
                         route=AppRoute::A(AllowMissing(Some(HomeRoute)))
