@@ -1,4 +1,4 @@
-name: Rust
+name: Build and Deploy Site
 
 env:
   NODE_VERSION: "12.x"
@@ -10,7 +10,7 @@ on:
     branches: [master]
 
 jobs:
-  deploy:
+  Deploy:
     name: "Deploy"
     runs-on: ubuntu-latest
 
@@ -28,8 +28,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION}}
-      - run: npm ci
-      - run: npm run build --if-present
+      - name: Clean Install
+        run: npm ci
+      - name: Build WASM
+        run: npm run build --if-present
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.0
