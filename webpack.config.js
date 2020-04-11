@@ -1,7 +1,7 @@
-const path = require("path");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
+const distPath = "./dist";
 module.exports = (env, argv) => {
   return {
     devServer: {
@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
     },
     entry: ["./bootstrap.js", "./styles/index.scss"],
     output: {
-      path: "./dist",
+      path: distPath,
       filename: "todomvc.js",
       webassemblyModuleFilename: "todomvc.wasm"
     },
