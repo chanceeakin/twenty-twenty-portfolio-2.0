@@ -20,6 +20,9 @@ jobs:
           override: true
           components: rustfmt, clippy
 
+      - uses: jetli/wasm-pack-action@v0.3.0
+        with:
+          version: "latest"
       - uses: jsmrcaga/action-netlify-deploy@master
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
