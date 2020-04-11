@@ -33,7 +33,7 @@ impl Component for HomeModel {
     fn view(&self) -> VNode {
         html! {
             <div>
-                { "I am the Home component"}
+                <p class="root-two">{ "I am the Home component"}</p>
                 <div>
                     <RouterButton<AppRoute>
                         route=AppRoute::A(AllowMissing(Some(HomeRoute)))
