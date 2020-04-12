@@ -1,4 +1,6 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/44f26fcc-34d9-43e2-8e88-4580b5a659ec/deploy-status)](https://app.netlify.com/sites/yew-todomvc/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/44f26fcc-34d9-43e2-8e88-4580b5a659ec/deploy-status)](https://app.netlify.com/sites/serene-northcutt-5f2bf4/deploys)
+
+![Most Recent Build](https://github.com/chanceeakin/twenty-twenty-portfolio-2.0/workflows/Build%20and%20Deploy%20Site/badge.svg?branch=master)
 
 ## About
 
