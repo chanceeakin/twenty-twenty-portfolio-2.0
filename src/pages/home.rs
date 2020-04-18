@@ -1,3 +1,4 @@
+use crate::components::wrapper::Wrapper;
 use yew::{prelude::*, virtual_dom::VNode, Properties};
 
 pub struct HomeModel;
@@ -25,9 +26,9 @@ impl Component for HomeModel {
 
     fn view(&self) -> VNode {
         html! {
-            <div>
-                <h1 class="text-xl text-gray-900 leading-tight">{"I am the Home component"}</h1>
-            </div>
+            <Wrapper>
+                <h1 class="text-xl text-white">{"Chance Eakin. Software Engineer."}</h1>
+            </Wrapper>
         }
     }
 }

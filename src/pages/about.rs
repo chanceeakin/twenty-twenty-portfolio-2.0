@@ -1,3 +1,4 @@
+use crate::components::wrapper::Wrapper;
 use yew::{prelude::*, virtual_dom::VNode, Properties};
 
 pub struct AboutModel;
@@ -25,9 +26,9 @@ impl Component for AboutModel {
 
     fn view(&self) -> VNode {
         html! {
-            <div>
-                {" I am the About component"}
-            </div>
+            <Wrapper>
+                <h1 class="text-xl text-white">{"About me."}</h1>
+            </Wrapper>
         }
     }
 }

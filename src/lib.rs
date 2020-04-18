@@ -1,5 +1,6 @@
 #![recursion_limit = "1024"]
 
+mod components;
 mod pages;
 mod utils;
 
@@ -50,7 +51,7 @@ impl Component for App {
                         render = Router::render(|switch: AppRoute| {
                             match switch {
                                 AppRoute::Home => html!{<HomeModel/>},
-                                AppRoute::C => html!{<AboutModel/>},
+                                AppRoute::About => html!{<AboutModel/>},
                                 AppRoute::PageNotFound(Permissive(None)) => html!{"Page not found"},
                                 AppRoute::PageNotFound(Permissive(Some(missed_route))) => html!{format!("Page '{}' not found", missed_route)}
                             }
@@ -68,11 +69,11 @@ impl Component for App {
 #[derive(Debug, Switch, Clone)]
 pub enum AppRoute {
     #[to = "/about"]
-    C,
-    #[to = "/page-not-found"]
-    PageNotFound(Permissive<String>),
+    About,
     #[to = "/"]
     Home,
+    #[to = "/page-not-found"]
+    PageNotFound(Permissive<String>),
 }
 
 #[derive(Debug, Switch, PartialEq, Clone, Copy)]
