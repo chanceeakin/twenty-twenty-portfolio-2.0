@@ -30,6 +30,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION}}
       - name: Clean Install
         run: npm ci
+        # make sure that wasm-pack is installed via npm
       - name: Build WASM
         run: npm run build --if-present
 

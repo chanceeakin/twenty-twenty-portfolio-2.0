@@ -1,5 +1,6 @@
 const path = require("path");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const distPath = path.resolve(__dirname, "dist");
@@ -8,51 +9,34 @@ module.exports = (env, argv) => {
     devServer: {
       contentBase: distPath,
       compress: argv.mode === "production",
-      port: 8000
+      port: 8000,
+      historyApiFallback: true,
     },
-    entry: ["./bootstrap.js", "./styles/index.scss"],
+    entry: ["./bootstrap.js", "./src/styles/index.css"],
     output: {
       path: distPath,
       filename: "todomvc.js",
-      webassemblyModuleFilename: "todomvc.wasm"
+      webassemblyModuleFilename: "todomvc.wasm",
     },
     module: {
       rules: [
         {
-          test: /\.scss$/,
-          use:
-            argv.mode !== "production"
-              ? ["style-loader", "css-loader", "sass-loader"]
-              : [
-                  {
-                    loader: "file-loader",
-                    options: {
-                      name: "[name].css"
-                    }
-                  },
-                  {
-                    loader: "extract-loader"
-                  },
-                  {
-                    loader: "css-loader?-url"
-                  },
-                  {
-                    loader: "postcss-loader"
-                  },
-                  {
-                    loader: "sass-loader"
-                  }
-                ]
-        }
-      ]
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+        },
+      ],
     },
     plugins: [
       new CopyWebpackPlugin([{ from: "./static", to: distPath }]),
+      new MiniCssExtractPlugin({
+        filename: "index.css",
+        chunkFilename: "index.css",
+      }),
       new WasmPackPlugin({
         crateDirectory: ".",
-        extraArgs: "--no-typescript"
-      })
+        extraArgs: "--no-typescript",
+      }),
     ],
-    watch: argv.mode !== "production"
+    watch: argv.mode !== "production",
   };
 };

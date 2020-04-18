@@ -26,7 +26,7 @@ use yew_router::{prelude::*, Switch};
 
 use self::pages::{about::AboutModel, home::HomeModel};
 use yew::virtual_dom::VNode;
-use yew_router::switch::{AllowMissing, Permissive};
+use yew_router::switch::Permissive;
 
 pub struct App {}
 
@@ -45,21 +45,12 @@ impl Component for App {
     fn view(&self) -> VNode {
         html! {
             <div>
-                <nav class="menu",>
-                    <RouterButton<AppRoute> route=AppRoute::A(AllowMissing(None))> {"Go to Home"} </RouterButton<AppRoute>>
-                    <RouterButton<AppRoute> route=AppRoute::C> {"Go to About"} </RouterButton<AppRoute>>
-                    <RouterButton<AppRoute> route=AppRoute::A(AllowMissing(Some(HomeRoute)))> {"Go to A/C"} </RouterButton<AppRoute>>
-                    <RouterButton<AppRoute> route=AppRoute::E("there".to_string())> {"Go to E (hello there)"} </RouterButton<AppRoute>>
-                    <RouterButton<AppRoute> route=AppRoute::E("world".to_string())> {"Go to E (hello world)"} </RouterButton<AppRoute>>
-                    <RouterButton<AppRoute> route=AppRoute::PageNotFound(Permissive(Some("nope".to_string())))> {"Go to bad path"} </RouterButton<AppRoute>>
-                </nav>
                 <div>
                     <Router<AppRoute>
                         render = Router::render(|switch: AppRoute| {
                             match switch {
-                                AppRoute::A(AllowMissing(route)) => html!{<HomeModel route = route />},
+                                AppRoute::Home => html!{<HomeModel/>},
                                 AppRoute::C => html!{<AboutModel/>},
-                                AppRoute::E(string) => html!{format!("hello {}", string)},
                                 AppRoute::PageNotFound(Permissive(None)) => html!{"Page not found"},
                                 AppRoute::PageNotFound(Permissive(Some(missed_route))) => html!{format!("Page '{}' not found", missed_route)}
                             }
@@ -76,16 +67,14 @@ impl Component for App {
 
 #[derive(Debug, Switch, Clone)]
 pub enum AppRoute {
-    #[to = "/a{*:inner}"]
-    A(AllowMissing<HomeRoute>),
-    #[to = "/c"]
+    #[to = "/about"]
     C,
-    #[to = "/e/{string}"]
-    E(String),
     #[to = "/page-not-found"]
     PageNotFound(Permissive<String>),
+    #[to = "/"]
+    Home,
 }
 
 #[derive(Debug, Switch, PartialEq, Clone, Copy)]
-#[to = "/c"]
+#[to = "/"]
 pub struct HomeRoute;

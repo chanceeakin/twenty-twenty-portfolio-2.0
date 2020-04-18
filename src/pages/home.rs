@@ -1,15 +1,9 @@
-use crate::{AppRoute, HomeRoute};
 use yew::{prelude::*, virtual_dom::VNode, Properties};
-use yew_router::{prelude::*, switch::AllowMissing};
 
-pub struct HomeModel {
-    props: Props,
-}
+pub struct HomeModel;
 
 #[derive(Clone, PartialEq, Properties)]
-pub struct Props {
-    pub route: Option<HomeRoute>,
-}
+pub struct Props {}
 
 pub enum Msg {}
 
@@ -17,29 +11,22 @@ impl Component for HomeModel {
     type Message = Msg;
     type Properties = Props;
 
-    fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        HomeModel { props }
+    fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
+        HomeModel
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
-        true
+        false
     }
 
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
-        self.props = props;
+    fn change(&mut self, _props: Self::Properties) -> ShouldRender {
         true
     }
 
     fn view(&self) -> VNode {
         html! {
             <div>
-                <p class="root-two">{ "I am the Home component"}</p>
-                <p class="root-two">{ "Look at me, I am the captain now"}</p>
-                <div>
-                    <RouterButton<AppRoute>
-                        route=AppRoute::A(AllowMissing(Some(HomeRoute)))
-                    />
-                </div>
+                <h1 class="text-xl text-gray-900 leading-tight">{"I am the Home component"}</h1>
             </div>
         }
     }
