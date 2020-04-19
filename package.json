@@ -7,6 +7,7 @@
     "start:dev": "webpack-dev-server --mode development"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "2.1.2",
     "@wasm-tool/wasm-pack-plugin": "^1.1.0",
     "autoprefixer": "9.7.6",
     "copy-webpack-plugin": "^5.1.1",
