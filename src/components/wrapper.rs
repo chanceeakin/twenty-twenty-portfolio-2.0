@@ -9,6 +9,11 @@ pub struct Wrapper {
     props: WrapperProps,
 }
 
+// #[link(wasm_import_module = "particlesjs")]
+// extern "C" {
+//     fn init(init: Init);
+// }
+
 pub enum Msg {}
 impl Component for Wrapper {
     type Message = Msg;
@@ -27,7 +32,7 @@ impl Component for Wrapper {
     }
     fn view(&self) -> Html {
         html! {
-        <div class="flex text-center bg-gray-900 justify-center items-center w-screen h-screen">
+        <div id="particle-mount" class="flex text-center bg-gray-900 justify-center items-center w-screen h-screen">
                 { self.props.children.render() }
             </div>
         }
