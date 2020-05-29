@@ -32,7 +32,7 @@ impl Component for Wrapper {
     }
     fn view(&self) -> Html {
         html! {
-        <div id="particle-mount" class="flex text-center bg-gray-900 justify-center items-center w-screen h-screen">
+        <div id="particle-mount" class="flex flex-col text-center bg-gray-900 justify-center items-center w-screen h-screen">
                 { self.props.children.render() }
             </div>
         }
