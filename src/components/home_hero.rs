@@ -1,20 +1,18 @@
-use crate::components::home_hero::HomeHero;
-use crate::components::wrapper::Wrapper;
 use yew::{prelude::*, virtual_dom::VNode, Properties};
 
-pub struct HomeModel;
+pub struct HomeHero;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct Props {}
 
 pub enum Msg {}
 
-impl Component for HomeModel {
+impl Component for HomeHero {
     type Message = Msg;
     type Properties = Props;
 
     fn create(_props: Self::Properties, _link: ComponentLink<Self>) -> Self {
-        HomeModel
+        HomeHero
     }
 
     fn update(&mut self, _msg: Self::Message) -> ShouldRender {
@@ -27,9 +25,10 @@ impl Component for HomeModel {
 
     fn view(&self) -> VNode {
         html! {
-            <Wrapper>
-              <HomeHero />
-            </Wrapper>
+          <>
+            <h1 class="text-6xl text-white">{"Chance Eakin"}</h1>
+            <h2 class="text-2xl text-white">{"Software Engineer"}</h2>
+          </>
         }
     }
 }
