@@ -1,3 +1,4 @@
+use crate::components::nav_bar::NavBar;
 use yew::{prelude::*, Children, Properties};
 
 #[derive(Clone, PartialEq, Properties)]
@@ -32,9 +33,12 @@ impl Component for Wrapper {
     }
     fn view(&self) -> Html {
         html! {
+            <>
+              <NavBar />
         <div id="particle-mount" class="flex flex-col text-center bg-gray-900 justify-center items-center w-screen h-screen">
                 { self.props.children.render() }
             </div>
+            </>
         }
     }
 }
