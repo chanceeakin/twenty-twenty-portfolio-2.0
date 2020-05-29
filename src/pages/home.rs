@@ -27,7 +27,8 @@ impl Component for HomeModel {
     fn view(&self) -> VNode {
         html! {
             <Wrapper>
-                <h1 class="text-xl text-white">{"Chance Eakin. Software Engineer."}</h1>
+                <h1 class="text-4xl text-white">{"Chance Eakin"}</h1>
+                <h2 class="text-xl text-white">{"Software Engineer"}</h2>
             </Wrapper>
         }
     }
